@@ -27,9 +27,11 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlue,
       appBar: AppBar(
+        backgroundColor: Colors.green,
         // 바꿀 필요 없는 값 앞에는 const 붙여주는 연습하기
-        title: const Text('Main Page'),
+        title: const Text('<UpTension>'),
       ),
       body: Center(
         child: Column(
