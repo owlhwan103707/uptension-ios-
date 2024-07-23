@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
-import 'notification.dart';
-import 'Onboarding.dart';
+import 'onboarding.dart'; // OnboardingPage 파일을 임포트합니다.
+import 'notification.dart'; // notification.dart 파일을 임포트합니다.
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterLocalNotification.init(); // 알림 초기화를 수행합니다.
+  FlutterLocalNotification.requestNotificationPermission(); // 알림 권한 요청
 
+  // 시간대별 알림 스케줄링
+  FlutterLocalNotification.scheduleDailyNotification(
+      hour: 8, minute: 0, message: '좋은 아침입니다!'); // 아침 8시 알림 스케줄링
+  FlutterLocalNotification.scheduleDailyNotification(
+      hour: 12, minute: 0, message: '맛있는 점심 되세요!'); // 점심 12시 알림 스케줄링
+  FlutterLocalNotification.scheduleDailyNotification(
+      hour: 17, minute: 52, message: '좋은 저녁입니다!'); // 저녁 6시 알림 스케줄링
 
-void main(){
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,48 +23,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_const_constructors
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const OnboardingPage(),
-    );
-  }
-}
-
-class MyPage extends StatelessWidget {
-  const MyPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.lightBlue,
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        // 바꿀 필요 없는 값 앞에는 const 붙여주는 연습하기
-        title: const Text('<UpTension>'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            // ignore: prefer_const_constructors
-            Text('Main Screen',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
-            ),
-            ElevatedButton(
-              onPressed: (){
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => const OnboardingPage())
-                );
-              },
-              child: Text('Go to Onboarding Screen'),
-            )
-          ],
-        ),
-      ),
+      home: OnboardingPage(), // 초기 화면으로 OnboardingPage를 설정합니다.
     );
   }
 }

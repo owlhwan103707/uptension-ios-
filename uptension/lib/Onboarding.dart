@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:uptension/home_screen.dart';
 import 'main.dart';
 
 
@@ -109,7 +110,7 @@ class OnboardingPage extends StatelessWidget {
       {
         // pushReplacement로 해주면 뒤로 가기 버튼이 안생김
 
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyPage()) );
+        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) =>  HomeScreen()) );
         // 현재 네비게이션 컨텍스트를 가져온다.현재 페이지를 새로운 페이지로 교체합니다.
         // 기존 페이지는 네비게이션 스택에서 제거되어 뒤로 가기 버튼이 작동하지 않게 된다.
         // MaterialPageRoute: 새로운 페이지로의 전환을 정의하는 Material 디자인 스타일의 라우트
@@ -137,6 +138,9 @@ class OnboardingPage extends StatelessWidget {
       curve: Curves.ease,
     );
   }
+
+
+
 
   // PageViewModel의 이미지 decoration 인자 값으로 주기 위한 메서드
   PageDecoration getPageDecoration(){
